@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
+
+import styles from './HomeComponent.css';
+
 class HomeComponent extends Component {
   constructor(props) {
     super(props);
@@ -10,21 +13,21 @@ class HomeComponent extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className={styles.container}>
         <h1>Sorting Algorithm Visualization</h1>
-        <div className="link">
+        <div className={styles.link}>
           <Link to="/bubblesort">Bubble Sort</Link>
         </div>
-        <div className="link">
+        <div className={styles.link}>
           <Link to="/quicksort">Quick Sort</Link>
         </div>
-        <div className="link">
+        <div className={styles.link}>
           <Link to="/selectionsort">Selection Sort</Link>
         </div>
-        <div className="link">
+        <div className={styles.link}>
           <Link to="/insertionsort">Insertion Sort</Link>
         </div>
-        <div className="link">
+        <div className={styles.link}>
           <Link to="/mergesort">Merge Sort</Link>
         </div>
       </div>
