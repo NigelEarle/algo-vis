@@ -11,7 +11,7 @@ class MergeSortComponent extends Component {
 
   render() {
     return (
-      <div className={styles.container}></div>
+      <div className={styles.container}>Merge Sort</div>
     );
   }
 }

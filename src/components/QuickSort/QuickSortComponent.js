@@ -11,7 +11,7 @@ class QuickSortComponent extends Component {
 
   render() {
     return (
-      <div className={styles.container}></div>
+      <div className={styles.container}>Quick sort</div>
     );
   }
 }

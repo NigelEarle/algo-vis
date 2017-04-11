@@ -11,7 +11,7 @@ class BubbleSortComponent extends Component {
 
   render() {
     return (
-      <div className={styles.container}></div>
+      <div className={styles.container}>BubbleSort</div>
     );
   }
 }
