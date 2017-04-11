@@ -1,7 +1,8 @@
 // adjust for prod
 const path = require('path');
-const webpack = require('webpack'); // eslint-disable-line
+const webpack = require('webpack');
 const express = require('express');
+const routes = require('./server/routes/sorting');
 const config = require('./webpack.config');
 
 const isDev = process.env.NODE_ENV !== 'production';
@@ -10,6 +11,7 @@ const PORT = 3000;
 const app = express();
 const compiler = webpack(config);
 
+app.use('/api', routes);
 
 if (isDev) {
   /* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
