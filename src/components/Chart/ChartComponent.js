@@ -7,16 +7,20 @@ class ChartComponent extends Component {
     super(props);
     this.state = {
       data: ['bubble numbers'],
+      chart: null,
     };
   }
 
-  componentDidMount() {
-    this.updateChart(this.props);
+  componentWillMount() {
+    // this.setState({
+    //   data: this.state.data.concat(this.props.data)
+    // });
+    this.generateChart();
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.data !== this.props.data) {
-      this.updateChart(this.props);
+      // this.updateChart(this.props);
     }
   }
 
@@ -24,11 +28,9 @@ class ChartComponent extends Component {
     if (this.state.data.length > 1) {
       const firstIndex = this.state.data.slice(0, 1);
       this.setState({ data: firstIndex.concat(props.data) });
-    } else {
-      this.setState({ data: this.state.data.concat(props.data) });
     }
-
-    c3.generate({
+    console.log('this state in update: ', this.state);
+    this.state.chart.load({
       bindTo: '#chart',
       data: {
         columns: [
@@ -38,9 +40,23 @@ class ChartComponent extends Component {
       }
     });
   }
+
+  generateChart() {
+    c3.generate({
+      bindTo: '#chart',
+      data: {
+        columns: [
+          this.props.data,
+        ],
+        type: 'bar',
+      }
+    });
+    // this.setState({ chart });
+  }
   render() {
+    console.log('this state: ', this.state);
     return (
-      <div id="chart">hello</div>
+      <div id="chart">hey buddy</div>
     );
   }
 }

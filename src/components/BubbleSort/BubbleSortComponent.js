@@ -5,12 +5,17 @@ import styles from './BubbleSortComponent.css';
 class BubbleSortComponent extends Component {
   constructor(props) {
     super(props);
+    this.receiveEventSource = this.receiveEventSource.bind(this);
     this.state = {
-      data: [],
+      data: [12, 34, 82, 98, 76, 53, 1, 49, 22, 61, 5],
     };
   }
 
   componentDidMount() {
+    this.receiveEventSource();
+  }
+
+  receiveEventSource() {
     if (!!window.EventSource) {
       const source = new EventSource('/api/bubble-sort');
       source.onmessage = (e) => {
@@ -35,6 +40,7 @@ class BubbleSortComponent extends Component {
   }
 
   render() {
+    console.log('state in bubble component: ', this.state.data);
     return (
       <div className={styles.container}>
         <h1>Bubble Sort</h1>

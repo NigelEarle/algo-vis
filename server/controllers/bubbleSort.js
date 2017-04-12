@@ -1,10 +1,10 @@
 module.exports = (req, res) => {
   console.log('hitt');
-  res.setSseHeaders(); // set headers
-
   const array = [12, 34, 82, 98, 76, 53, 1, 49, 22, 61, 5];
   let iterNum = 0;
   let idx = 0;
+
+  res.setSseHeaders(); // set event/stream headers
 
   (function iteration() {
     if (idx >= array.length - iterNum - 1) {
