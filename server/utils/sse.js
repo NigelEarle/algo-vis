@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
   };
 
   res.sseSend = (data) => {
-    res.write(JSON.stringify(data));
+    res.write('data: ' + JSON.stringify(data) + '\n\n');
   };
 
   next();

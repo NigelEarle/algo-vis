@@ -3,21 +3,36 @@ import c3 from 'c3';
 // import styles from './ChartComponent.css';
 
 class ChartComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: ['bubble numbers'],
+    };
+  }
 
   componentDidMount() {
-    this.updateChart();
+    this.updateChart(this.props);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data !== this.props.data) {
+      this.updateChart(this.props);
+    }
   }
 
-  updateChart() {
+  updateChart(props) {
+    if (this.state.data.length > 1) {
+      const firstIndex = this.state.data.slice(0, 1);
+      this.setState({ data: firstIndex.concat(props.data) });
+    } else {
+      this.setState({ data: this.state.data.concat(props.data) });
+    }
+
     c3.generate({
       bindTo: '#chart',
       data: {
         columns: [
-          ['My Numbers', 30, 200, 90, 400, 150, 250], // props data passed down
+          this.state.data,
         ],
         type: 'bar',
       }

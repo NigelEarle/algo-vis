@@ -1,4 +1,5 @@
 module.exports = (req, res) => {
+  console.log('hitt');
   res.setSseHeaders(); // set headers
 
   const array = [12, 34, 82, 98, 76, 53, 1, 49, 22, 61, 5];
@@ -6,7 +7,7 @@ module.exports = (req, res) => {
   let idx = 0;
 
   (function iteration() {
-    if (idx >= array.length - iterNum) {
+    if (idx >= array.length - iterNum - 1) {
       idx = 0;
       iterNum += 1;
     }
@@ -18,7 +19,7 @@ module.exports = (req, res) => {
         res.sseSend(array);
       }
       idx += 1;
-      setTimeout(iteration, 1000);
+      setTimeout(iteration, 500);
     } else {
       res.end();
     }
