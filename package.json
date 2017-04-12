@@ -2,7 +2,7 @@
   "name": "algo-vis",
   "version": "1.0.0",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "lint": "eslint src"
   },
   "repository": "git@github.com:NigelEarle/algo-vis.git",

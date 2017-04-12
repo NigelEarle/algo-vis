@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ChartComponent } from '../../components';
 import styles from './BubbleSortComponent.css';
 
 class BubbleSortComponent extends Component {
@@ -11,7 +12,9 @@ class BubbleSortComponent extends Component {
 
   render() {
     return (
-      <div className={styles.container}>BubbleSort</div>
+      <div className={styles.container}>
+        <ChartComponent />
+      </div>
     );
   }
 }
