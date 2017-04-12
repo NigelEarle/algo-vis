@@ -2,21 +2,25 @@ module.exports = (req, res) => {
   res.setSseHeaders(); // set headers
 
   const array = [12, 34, 82, 98, 76, 53, 1, 49, 22, 61, 5];
-  let swapped = true;
-  while (swapped !== false) {
-    swapped = false;
-    for (let i = 0; i < array.length; i += 1) {
-      if (array[i] > array[i + 1]) {
-        const temp = array[i];
-        array[i] = array[i + 1];
-        array[i + 1] = temp;
-        swapped = true;
+  let iterNum = 0;
+  let idx = 0;
+
+  (function iteration() {
+    if (idx >= array.length - iterNum) {
+      idx = 0;
+      iterNum += 1;
+    }
+    if (iterNum < array.length) {
+      if (array[idx] > array[idx + 1]) {
+        const temp = array[idx];
+        array[idx] = array[idx + 1];
+        array[idx + 1] = temp;
         res.sseSend(array);
       }
+      idx += 1;
+      setTimeout(iteration, 1000);
+    } else {
+      res.end();
     }
-  }
-  res.end();
+  }());
 };
-// first iteration - return array
-// run while loop, go into for loop - return first iteration of array
-// wait 1 second while next iteration completes sorted array
