@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import c3 from 'c3';
 // import styles from './ChartComponent.css';
 
@@ -30,11 +30,12 @@ class ChartComponent extends Component {
   }
 
   generateChart() {
+    const { data } = this.props;
     const chart = c3.generate({
       bindTo: '#chart',
       data: {
         columns: [
-          this.props.data,
+          data,
         ],
         type: 'bar',
       }
@@ -47,5 +48,13 @@ class ChartComponent extends Component {
     );
   }
 }
+
+ChartComponent.defaultProps = {
+  data: [],
+};
+
+ChartComponent.propTypes = {
+  data: PropTypes.array.isRequired
+};
 
 export default ChartComponent;

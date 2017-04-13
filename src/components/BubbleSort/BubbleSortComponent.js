@@ -41,12 +41,12 @@ class BubbleSortComponent extends Component {
   }
 
   render() {
-    console.log('state in bubble component: ', this.state.data);
+    const { data } = this.state
     return (
       <div className={styles.container}>
         <h1>Bubble Sort</h1>
         <ChartComponent
-          data={this.state.data}
+          data={data}
         />
       </div>
     );
