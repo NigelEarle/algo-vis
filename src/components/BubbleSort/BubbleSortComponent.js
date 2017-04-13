@@ -7,7 +7,7 @@ class BubbleSortComponent extends Component {
     super(props);
     this.receiveEventSource = this.receiveEventSource.bind(this);
     this.state = {
-      data: [12, 34, 82, 98, 76, 53, 1, 49, 22, 61, 5],
+      data: ['bubble numbers', 12, 34, 82, 98, 76, 53, 1, 49, 22, 61, 5],
     };
   }
 
@@ -20,7 +20,8 @@ class BubbleSortComponent extends Component {
       const source = new EventSource('/api/bubble-sort');
       source.onmessage = (e) => {
         const data = JSON.parse(e.data);
-        this.setState({ data });
+        const firstIndex = this.state.data.slice(0, 1);
+        this.setState({ data: firstIndex.concat(data) });
       };
 
       source.onopen = () => {
