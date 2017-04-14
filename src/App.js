@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import AlgoVisRouter from './router/';
+import { HomeComponent } from './components';
 
-ReactDOM.render(<AlgoVisRouter />, document.querySelector('#root'));
+ReactDOM.render(<HomeComponent />, document.querySelector('#root'));
