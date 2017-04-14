@@ -9,8 +9,6 @@
     "node": true
   },
   "rules": {
-    // "indent": [2, "tab"],
-    "react/forbid-prop-types": [enabled, 0],
     "comma-dangle": 0,
     "no-console": 0,
     "strict": 0,
