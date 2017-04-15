@@ -15,16 +15,14 @@ class ChartComponent extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.data !== this.props.data) {
-      this.updateChart(this.props);
-    }
+    this.updateChart(nextProps.data);
   }
 
-  updateChart(props) {
+  updateChart(data) {
     const { chart } = this.state;
     chart.load({
       columns: [
-        props.data,
+        data,
       ],
     });
   }

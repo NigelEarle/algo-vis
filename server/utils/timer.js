@@ -4,7 +4,7 @@ module.exports = (data, res) => {
     ((i) => {
       setTimeout(() => {
         res.sseSend(data[i]);
-      }, 400 * i);
+      }, 1000 * i);
     })(i);
   }
 };
