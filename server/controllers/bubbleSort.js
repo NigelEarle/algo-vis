@@ -1,9 +1,8 @@
-const redis = require('redis');
 module.exports = (req, res) => {
   console.log('bubble sort hitt');
   const array = [12, 34, 82, 98, 76, 53, 1, 49, 22, 61, 5];
   let swapped = true;
-
+  const data = [];
   while (swapped) {
     swapped = false;
     for (let i = 0; i < array.length; i += 1) {
@@ -12,6 +11,7 @@ module.exports = (req, res) => {
         array[i] = array[i + 1];
         array[i + 1] = temp;
         swapped = true;
+        data.push(array);
       }
     }
   }
