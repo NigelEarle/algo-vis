@@ -11,19 +11,28 @@ class HomeComponent extends Component {
     super(props);
     this.receiveStream = this.receiveStream.bind(this);
     this.state = {
-      algorithms: ['bubble-sort', 'insertion-sort', 'merge-sort', 'quick-sort', 'selection-sort'],
-      data: ['numbers', 12, 34, 82, 98, 76, 53, 1, 49, 22, 61, 5],
+      algorithms: [
+        'bubble-sort',
+        'insertion-sort',
+        'merge-sort',
+        'quick-sort',
+        'selection-sort'
+      ],
+      data: ['numbers'],
     };
   }
 
-  // componentWillMount() {
-  //   const oReq = new XMLHttpRequest();
-  //   oReq.addEventListener('load', this.initialRequest);
-  // }
-
-  // initialRequest() {
-  //   // save array to state data
-  // }
+  componentWillMount() {
+    const { data } = this.state;
+    const self = this;
+    const oReq = new XMLHttpRequest();
+    oReq.addEventListener('load', function () { // eslint-disable-line
+      const initData = JSON.parse(this.responseText);
+      self.setState({ data: data.concat(initData.data) });
+    });
+    oReq.open('GET', '/api/');
+    oReq.send();
+  }
 
   receiveStream(value) {
     if (!!window.EventSource) {
