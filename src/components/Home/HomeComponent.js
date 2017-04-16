@@ -16,6 +16,15 @@ class HomeComponent extends Component {
     };
   }
 
+  // componentWillMount() {
+  //   const oReq = new XMLHttpRequest();
+  //   oReq.addEventListener('load', this.initialRequest);
+  // }
+
+  // initialRequest() {
+  //   // save array to state data
+  // }
+
   receiveStream(value) {
     if (!!window.EventSource) {
       const source = new EventSource(`/api/${value}`);
@@ -26,14 +35,14 @@ class HomeComponent extends Component {
       };
 
       source.onopen = () => {
-        console.log('connected!');
+        console.log('stream connected!');
       };
 
       source.onerror = (e) => {
         if (e.target.readyState === EventSource.CLOSED) {
-          console.log('closed');
+          console.log('stream closed');
         } else if (e.target.readyState === EventSource.CONNECTING) {
-          console.log('trying to connect');
+          console.log('trying to connect to stream');
         }
       };
     } else {
