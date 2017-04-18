@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import c3 from 'c3';
-// import styles from './ChartComponent.css';
+import styles from './ChartComponent.css';
 
 class ChartComponent extends Component {
   constructor(props) {
@@ -21,9 +21,7 @@ class ChartComponent extends Component {
   updateChart(data) {
     const { chart } = this.state;
     chart.load({
-      columns: [
-        data,
-      ],
+      columns: [data],
     });
   }
 
@@ -32,9 +30,7 @@ class ChartComponent extends Component {
     const chart = c3.generate({
       bindTo: '#chart',
       data: {
-        columns: [
-          data,
-        ],
+        columns: [data],
         type: 'bar',
       }
     });
@@ -42,7 +38,9 @@ class ChartComponent extends Component {
   }
   render() {
     return (
-      <div id="chart">hey buddy</div>
+      <div className={styles.container}>
+        <div id="chart">hey buddy</div>
+      </div>
     );
   }
 }
@@ -52,7 +50,7 @@ ChartComponent.defaultProps = {
 };
 
 ChartComponent.propTypes = {
-  data: PropTypes.array.isRequired
+  data: PropTypes.arrays.isRequired
 };
 
 export default ChartComponent;
